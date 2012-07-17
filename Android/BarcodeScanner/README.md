@@ -4,17 +4,17 @@ Updates by Simon MacDonald
 
 ## Adding the Plugin to your project ##
 
-1. Add the 'LibraryProject' into Eclipse. File -> New Android Project -> create project from existing source.
+1. Add the 'LibraryProject' into Eclipse. File -> *New Android Project* -> create project from existing source.
 2. In the new project you've just added to Eclipse go to the project properties. Select the Android section and at the bottom of the dialog check the "Is Library" checkbox.
 3. In your application go into the project properties. In the Android section under library click the Add button and select the library you created in step 2.
 4. To install the plugin, move barcodescanner.js to your project's www folder and include a reference to it in your html files.
 5. Create a folder called 'com/phonegap/plugins/barcodescanner' within your project's src folder.
 6. And copy the BarcodeScanner.java file into that new folder.
 
-```shell
-mkdir -p <your_project>/src/com/phonegap/plugins/barcodescanner
-cp ./src/com/phonegap/plugins/barcodescanner/BarcodeScanner.java <your_project>/src/com/phonegap/plugins/barcodescanner/
-```
+  ```shell
+  mkdir -p <your_project>/src/com/phonegap/plugins/barcodescanner
+  cp ./src/com/phonegap/plugins/barcodescanner/BarcodeScanner.java <your_project>/src/com/phonegap/plugins/barcodescanner/
+  ```
 
 7. In your res/xml/plugins.xml file add the following line:
 
@@ -22,25 +22,25 @@ cp ./src/com/phonegap/plugins/barcodescanner/BarcodeScanner.java <your_project>/
 
 8. Add the following activity to your AndroidManifest.xml file. It should be added inside the &lt;application/&gt; tag.
 
-```xml
-        <!-- ZXing activities -->
-        <activity android:name="com.google.zxing.client.android.CaptureActivity"
-                  android:screenOrientation="landscape"
-                  android:configChanges="orientation|keyboardHidden"
-                  android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-                  android:windowSoftInputMode="stateAlwaysHidden">
-          <intent-filter>
-            <action android:name="com.phonegap.plugins.barcodescanner.SCAN"/>
-            <category android:name="android.intent.category.DEFAULT"/>
-          </intent-filter>
-        </activity>
-        <activity android:name="com.google.zxing.client.android.encode.EncodeActivity" android:label="@string/share_name">
-          <intent-filter>
-            <action android:name="com.phonegap.plugins.barcodescanner.ENCODE"/>
-            <category android:name="android.intent.category.DEFAULT"/>
-          </intent-filter>
-        </activity>
-```
+  ```xml
+          <!-- ZXing activities -->
+          <activity android:name="com.google.zxing.client.android.CaptureActivity"
+                    android:screenOrientation="landscape"
+                    android:configChanges="orientation|keyboardHidden"
+                    android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+                    android:windowSoftInputMode="stateAlwaysHidden">
+            <intent-filter>
+              <action android:name="com.phonegap.plugins.barcodescanner.SCAN"/>
+              <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+          </activity>
+          <activity android:name="com.google.zxing.client.android.encode.EncodeActivity" android:label="@string/share_name">
+            <intent-filter>
+              <action android:name="com.phonegap.plugins.barcodescanner.ENCODE"/>
+              <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+          </activity>
+  ```
 
 9. And make sure you have the following permission in your AndroidManifest.xml file:
 
